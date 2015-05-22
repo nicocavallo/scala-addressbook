@@ -6,7 +6,9 @@ import java.util.Date
 /**
  * Created by ncavallo on 22/05/15.
  */
-case class Contact(name: String, gender: String, birthDay: Date)
+case class Contact(name: String, gender: String, birthDay: Date) {
+  override def toString = name
+}
 
 object Contact {
 
