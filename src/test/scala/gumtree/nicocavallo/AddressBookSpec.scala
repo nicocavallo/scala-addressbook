@@ -20,23 +20,27 @@ class AddressBookSpec extends WordSpec with Matchers {
     override val addresses: Seq[Contact] = Seq()
   }
 
-  "AddressBook" should {
-    "return 3 for counting males " in {
-      SimpleAddressBook.countMales shouldBe 3
-    }
-
+  "EmptyAddressBook" should {
     "return 0 for counting males " in {
       EmptyAddressBook.countMales shouldBe 0
+    }
+    "return 'None' for the oldest person " in {
+      EmptyAddressBook.oldest shouldBe None
+    }
+    "return 'None' for how many days is Bill older than Paul" in {
+      EmptyAddressBook.daysDiff("Bill McKnight","Paul Robinson") shouldBe None
+    }
+  }
+
+  "SimpleAddressBook" should {
+    "return 3 for counting males " in {
+      SimpleAddressBook.countMales shouldBe 3
     }
 
     "return 'Wes Jackson' for the oldest person " in {
       val oldest = SimpleAddressBook.oldest
       oldest.isDefined shouldBe true
       oldest.get.name shouldBe "Wes Jackson"
-    }
-
-    "return 'None' for the oldest person " in {
-      EmptyAddressBook.oldest shouldBe None
     }
 
     "return 2863 for how many days is Bill older than Paul" in {
@@ -51,9 +55,6 @@ class AddressBookSpec extends WordSpec with Matchers {
       SimpleAddressBook.daysDiff("Paul Robinson","Bill McKnight") shouldBe Some(-2862)
     }
 
-    "return 'None' for how many days is Bill older than Paul" in {
-      EmptyAddressBook.daysDiff("Bill McKnight","Paul Robinson") shouldBe None
-    }
   }
 
 }
