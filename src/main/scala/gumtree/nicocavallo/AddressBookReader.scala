@@ -5,8 +5,14 @@ import scala.io.Source
 /**
  * Created by ncavallo on 22/05/15.
  */
-trait AddressBookReader { self:Settings =>
+trait AddressBookReader {
 
-  lazy val addresses = Source.fromFile(addressBookFileName).getLines.map(Contact(_)).toStream
+  val addresses:Seq[Contact]
+
+}
+
+trait AddressBookFileReader extends AddressBookReader { self:Settings =>
+
+  override lazy val addresses = Source.fromFile(addressBookFileName).getLines.map(Contact(_)).toSeq
 
 }
