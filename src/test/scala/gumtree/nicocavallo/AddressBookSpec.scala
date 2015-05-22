@@ -1,5 +1,7 @@
 package gumtree.nicocavallo
 
+import java.text.SimpleDateFormat
+
 import org.scalatest.{Matchers, WordSpec}
 
 /**
@@ -8,6 +10,9 @@ import org.scalatest.{Matchers, WordSpec}
 class AddressBookSpec extends WordSpec with Matchers {
 
   object SimpleAddressBook extends GumtreeCodingChallenge with AddressBookReader {
+
+    implicit val DateFormat = new SimpleDateFormat("dd/MM/yy")
+
     override val addresses: Seq[Contact] = Seq(
       Contact("Bill McKnight, Male, 16/03/77"),
       Contact("Paul Robinson, Male, 15/01/85"),

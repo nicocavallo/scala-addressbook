@@ -1,5 +1,7 @@
 package gumtree.nicocavallo
 
+import java.text.{SimpleDateFormat, DateFormat}
+
 import com.typesafe.config.Config
 
 /**
@@ -8,6 +10,8 @@ import com.typesafe.config.Config
 trait Settings {
 
   val config:Config
+
+  lazy val dateFormat = new SimpleDateFormat(config.getString("app.dateFormat"))
 
   lazy val addressBookFileName = config.getString("app.addressBook")
 

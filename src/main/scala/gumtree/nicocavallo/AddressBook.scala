@@ -7,7 +7,7 @@ import scala.collection.JavaConversions._
  * Created by ncavallo on 22/05/15.
  */
 object AddressBook extends App with GumtreeCodingChallenge with AddressBookFileReader with Settings {
-  override val config: Config = ConfigFactory.parseMap(Map("app.addressBook" -> "AddressBook"))
+  override val config: Config = ConfigFactory.load()
 
   println(s"1. $countMales are males in AddressBook")
   println(s"2. $oldest is the oldest contact in AddressBook")
