@@ -13,7 +13,7 @@ trait GumtreeCodingChallenge {
   /**
    * Helper storage for optimizing count by gender
    */
-  private lazy val byGender = addresses.groupBy[String](c => c.gender).mapValues(_.size)
+  private lazy val byGender = addresses.groupBy(_.gender).mapValues(_.size)
 
   /**
    * Another helper storage for optimizing access to the users by name.
