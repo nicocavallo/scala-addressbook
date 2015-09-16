@@ -50,9 +50,11 @@ trait GumtreeCodingChallenge {
     for {
       from <- fromOpt
       to <- toOpt
+      toHead <- to.headOption
+      fromHead <- from.headOption
       if from.size == 1 && to.size == 1
     } yield {
-      val diff = to.head.birthDay.getTime - from.head.birthDay.getTime
+      val diff = toHead.birthDay.getTime - fromHead.birthDay.getTime
       DAYS.convert(diff, MILLISECONDS)
     }
   }
