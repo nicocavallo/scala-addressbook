@@ -11,7 +11,7 @@ class AddressBookSpec extends WordSpec with Matchers {
 
   object SimpleAddressBook extends GumtreeCodingChallenge with AddressBookReader {
 
-    implicit val DateFormat = new SimpleDateFormat("dd/MM/yy")
+    implicit val dateFormat = new SimpleDateFormat("dd/MM/yy")
 
     override val addresses: Seq[Contact] = Seq(
       Contact("Bill McKnight, Male, 16/03/77"),
@@ -45,7 +45,7 @@ class AddressBookSpec extends WordSpec with Matchers {
     "return 'Wes Jackson' for the oldest person " in {
       val oldest = SimpleAddressBook.oldest
       oldest.isDefined shouldBe true
-      oldest.get.name shouldBe "Wes Jackson"
+      oldest.exists(_.name === "Wes Jackson") shouldBe true
     }
 
     "return 2863 for how many days is Bill older than Paul" in {
