@@ -1,6 +1,6 @@
 package gumtree.nicocavallo
 
-import java.util.concurrent.TimeUnit
+import java.util.concurrent.TimeUnit._
 
 import scala.util.Try
 
@@ -28,19 +28,14 @@ trait GumtreeCodingChallenge {
     countByGender("Male")
   }
 
-  private def countByGender(gender: String) = byGender.get(gender).getOrElse(0)
+  private def countByGender(gender: String) = byGender.getOrElse(gender,0)
 
   /**
    * This method returns the oldest contact (if Address Book is not empty).
    * @return an Option: 'Some oldest contact' or 'None' if the Address Book is empty
    */
   def oldest: Option[Contact] = {
-    Try(addresses.minBy(_.birthDay)) map { c =>
-      Some(c)
-    } recover {
-      case _ => None
-    } get
-
+    Try(addresses.minBy(_.birthDay)).toOption
   }
 
   /**
@@ -52,18 +47,17 @@ trait GumtreeCodingChallenge {
    *         - None if any or both of them does not exist or if there is a duplicated name in the AddressBook
    */
   def daysDiff(fromName: String, toName: String): Option[Long] = {
-    require(fromName != null && toName != null)
+    require(Option(fromName).isDefined && Option(toName).isDefined)
 
     val fromOpt = byName.get(fromName)
     val toOpt = byName.get(toName)
     for {
       from <- fromOpt
       to <- toOpt
-      if (from.size == 1 && to.size == 1)
+      if from.size == 1 && to.size == 1
     } yield {
-      val diff = to(0).birthDay.getTime - from(0).birthDay.getTime
-      val timeUnit = TimeUnit.DAYS
-      timeUnit.convert(diff, TimeUnit.MILLISECONDS)
+      val diff = to.head.birthDay.getTime - from.head.birthDay.getTime
+      DAYS.convert(diff, MILLISECONDS)
     }
   }
 
