@@ -24,9 +24,7 @@ trait GumtreeCodingChallenge {
    * Counts how many males are in the Address Book
    * @return number of males in the Address Book, 0 if it is empty
    */
-  def countMales = {
-    countByGender("Male")
-  }
+  def countMales = countByGender("Male")
 
   private def countByGender(gender: String) = byGender.getOrElse(gender,0)
 
@@ -34,9 +32,7 @@ trait GumtreeCodingChallenge {
    * This method returns the oldest contact (if Address Book is not empty).
    * @return an Option: 'Some oldest contact' or 'None' if the Address Book is empty
    */
-  def oldest: Option[Contact] = {
-    Try(addresses.minBy(_.birthDay)).toOption
-  }
+  def oldest: Option[Contact] = Try(addresses.minBy(_.birthDay)).toOption
 
   /**
    *
