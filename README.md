@@ -1,6 +1,6 @@
 # Gumtree coding challenge
 
-[![Codacy Badge](https://api.codacy.com/project/badge/fb1646a82a2d4122a87e1e8edc3ef6b9)](https://www.codacy.com/app/nicocavallo/scala-addressbook)
+[![Codacy Badge](https://api.codacy.com/project/badge/fb1646a82a2d4122a87e1e8edc3ef6b9)](https://www.codacy.com/app/nicocavallo/scala-addressbook) [![Build Status](https://travis-ci.org/nicocavallo/scala-addressbook.svg?branch=master)](https://travis-ci.org/nicocavallo/scala-addressbook)
 
 ## The task
 
